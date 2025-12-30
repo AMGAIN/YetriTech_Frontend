@@ -12,7 +12,7 @@ const Navbar = () => {
                     <p className='text-[10px] text-gray-400'>CENTRAL PRECINCT SECTOR-07</p>
                 </div>
                 <div className="w-100 flex justify-between items-center ">
-                    <div className=" p-2 bg-green-300 rounded-[10px] border-3 border-green-600 flex justify-center items-center text-green-800">5 ACTIVE</div>
+                    <div className=" p-2 bg-green-300 rounded-[10px] border-3 border-green-600 flex justify-center items-center text-green-800"><div className='w-3 h-3 rounded-full bg-green-600 mr-1'></div>5 ACTIVE</div>
                     <div className=" p-2 bg-gray-400 rounded-[10px] flex justify-center items-center text-white">Units ready</div>
                     <div className=" p-2 bg-gray-400 rounded-[10px] flex justify-center items-center text-white">Cameras: 87/100</div>
                 </div>
