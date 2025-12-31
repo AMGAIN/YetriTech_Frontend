@@ -19,9 +19,9 @@ function Clock() {
   }, []);
 
   return (
-    <div className=" border-2 border-gray-500">
-      <div>{date}</div>
-      <div>{time}</div>
+    <div>
+      <div className="text-white">{date}</div>
+      <div className="text-white">{time}</div>
     </div>
   );
 }
