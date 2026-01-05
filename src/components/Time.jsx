@@ -20,8 +20,8 @@ function Clock() {
 
   return (
     <div>
-      <div className="text-white">{date}</div>
-      <div className="text-white">{time}</div>
+      <div className="text-blue-600">{date}</div>
+      <div className="text-blue-600">{time}</div>
     </div>
   );
 }

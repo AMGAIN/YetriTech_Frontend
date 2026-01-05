@@ -4,30 +4,30 @@ const TrafficMetrics = ({ title = "Traffic Flow Metrics", timeframe = "Last 15 h
     const [selectedTime, setSelectedTime] = useState('15h');
     
     const legendItems = [
-        { label: 'Congestion', color: 'bg-yellow-500', text: 'text-yellow-500/80' },
-        { label: 'Crash', color: 'bg-red-500', text: 'text-red-500/80' },
-        { label: 'Theft', color: 'bg-purple-500', text: 'text-purple-500/80' },
+        { label: 'Congestion', color: 'bg-yellow-500', text: 'text-slate-600' },
+        { label: 'Crash', color: 'bg-red-500', text: 'text-slate-600' },
+        { label: 'Theft', color: 'bg-blue-600', text: 'text-slate-600' }, // Changed to Blue for theme
     ];
 
     return (
-        <div className="p-5 mt-2 w-150 max-w-2xl bg-[#1c1c1f] border border-zinc-800 rounded-2xl shadow-xl font-sans">
+        <div className="p-5 mt-2 w-150 max-w-2xl bg-white border border-slate-200 rounded-2xl shadow-xl font-sans">
             {/* Header Section */}
             <div className="flex justify-between items-center mb-6">
                 <div>
-                    <h3 className="text-zinc-100 font-bold text-sm tracking-tight">{title}</h3>
-                    <p className="text-[10px] text-zinc-500 uppercase tracking-widest mt-0.5">{timeframe}</p>
+                    <h3 className="text-slate-900 font-bold text-sm tracking-tight">{title}</h3>
+                    <p className="text-[10px] text-slate-400 uppercase tracking-widest mt-0.5 font-semibold">{timeframe}</p>
                 </div>
                 
-                {/* Interactive Time Range Selector */}
-                <div className="flex bg-zinc-900 rounded-lg p-1 border border-zinc-800">
+                {/* Interactive Time Range Selector - Replaced dark zinc with light slate/blue */}
+                <div className="flex bg-slate-50 rounded-lg p-1 border border-slate-200">
                     {['1h', '15h', '24h'].map((t) => (
                         <button
                             key={t}
                             onClick={() => setSelectedTime(t)}
                             className={`px-3 py-1 text-[10px] font-bold rounded-md transition-all ${
                                 selectedTime === t 
-                                ? 'bg-zinc-700 text-white shadow-sm' 
-                                : 'text-zinc-500 hover:text-zinc-300'
+                                ? 'bg-blue-600 text-white shadow-md shadow-blue-200' 
+                                : 'text-slate-400 hover:text-blue-600'
                             }`}
                         >
                             {t}
@@ -37,20 +37,20 @@ const TrafficMetrics = ({ title = "Traffic Flow Metrics", timeframe = "Last 15 h
             </div>
 
             <div className="flex gap-6 items-center">
-                {/* Simulated Graph Area */}
-                <div className="relative flex-grow h-32 bg-zinc-900/50 rounded-xl border border-zinc-800/50 overflow-hidden group">
+                {/* Simulated Graph Area - Changed to light slate with blue gradient */}
+                <div className="relative flex-grow h-32 bg-slate-50 rounded-xl border border-slate-100 overflow-hidden group">
                     {/* Background Grid Lines */}
-                    <div className="absolute inset-0 flex flex-col justify-between p-2 opacity-20">
-                        <div className="border-t border-zinc-600 w-full"></div>
-                        <div className="border-t border-zinc-600 w-full"></div>
-                        <div className="border-t border-zinc-600 w-full"></div>
+                    <div className="absolute inset-0 flex flex-col justify-between p-2 opacity-50">
+                        <div className="border-t border-slate-200 w-full"></div>
+                        <div className="border-t border-slate-200 w-full"></div>
+                        <div className="border-t border-slate-200 w-full"></div>
                     </div>
                     
-                    {/* Simulated Wave/Data Point (Visual Placeholder) */}
-                    <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-blue-500/20 to-transparent border-t-2 border-blue-500/50"></div>
+                    {/* Simulated Wave/Data Point - Vibrant Blue theme */}
+                    <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-blue-500/10 to-transparent border-t-2 border-blue-500/40"></div>
                     
                     <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="text-[10px] font-mono text-zinc-600 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span className="text-[10px] font-mono text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity font-bold">
                             DATA_VISUALIZATION_ACTIVE
                         </span>
                     </div>
@@ -60,7 +60,7 @@ const TrafficMetrics = ({ title = "Traffic Flow Metrics", timeframe = "Last 15 h
                 <div className="flex flex-col gap-3 min-w-[100px]">
                     {legendItems.map((item) => (
                         <div key={item.label} className="flex items-center gap-2 group cursor-default">
-                            <div className={`${item.color} w-2 h-2 rounded-full shadow-[0_0_8px_rgba(0,0,0,0.4)] group-hover:scale-125 transition-transform`}></div>
+                            <div className={`${item.color} w-2 h-2 rounded-full shadow-sm group-hover:scale-125 transition-transform`}></div>
                             <p className={`${item.text} text-[11px] font-bold tracking-wide uppercase`}>
                                 {item.label}
                             </p>
@@ -70,12 +70,12 @@ const TrafficMetrics = ({ title = "Traffic Flow Metrics", timeframe = "Last 15 h
             </div>
             
             {/* Footer Metric Summary */}
-            <div className="mt-4 pt-4 border-t border-zinc-800/50 flex gap-4">
-                <div className="text-[10px] text-zinc-500">
-                    Avg Flow: <span className="text-zinc-200 font-mono">42.5 veh/min</span>
+            <div className="mt-4 pt-4 border-t border-slate-100 flex gap-4">
+                <div className="text-[10px] text-slate-400 font-bold uppercase tracking-tight">
+                    Avg Flow: <span className="text-blue-600 font-mono font-black">42.5 veh/min</span>
                 </div>
-                <div className="text-[10px] text-zinc-500">
-                    Peak: <span className="text-zinc-200 font-mono">12:40 PM</span>
+                <div className="text-[10px] text-slate-400 font-bold uppercase tracking-tight">
+                    Peak: <span className="text-blue-600 font-mono font-black">12:40 PM</span>
                 </div>
             </div>
         </div>
