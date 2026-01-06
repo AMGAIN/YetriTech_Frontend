@@ -11,7 +11,7 @@ const DetailAlert = ({
     onClose = () => {}
 }) => {
     return (
-        <div className="w-full max-w-lg bg-white border border-slate-200 rounded-2xl shadow-2xl overflow-hidden font-sans">
+        <div className="w-full bg-white hidden lg:block border border-slate-200 rounded-2xl shadow-2xl overflow-hidden font-sans">
             
             {/* Header / Top Bar */}
             <div className="flex justify-between items-center px-5 py-4 border-b border-slate-100 bg-slate-50/50">

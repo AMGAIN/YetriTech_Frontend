@@ -10,7 +10,7 @@ const TrafficMetrics = ({ title = "Traffic Flow Metrics", timeframe = "Last 15 h
     ];
 
     return (
-        <div className="p-5 mt-2 w-150 max-w-2xl bg-white border border-slate-200 rounded-2xl shadow-xl font-sans">
+        <div className="p-5 mt-2 w-full bg-white rounded-2xl shadow-xl font-sans">
             {/* Header Section */}
             <div className="flex justify-between items-center mb-6">
                 <div>

@@ -7,7 +7,7 @@ const AlertContainer = () => {
     const categories = ['All', 'Crash', 'Collision', 'Theft'];
 
     return (
-        <div className="w-full max-w-md bg-white border border-slate-200 rounded-xl shadow-xl overflow-hidden font-sans">
+        <div className="w-full bg-white border border-slate-200 rounded-xl shadow-xl overflow-hidden font-sans">
             
             {/* Header Area - Light slate background with blue-accented icon */}
             <div className="p-4 flex items-center justify-between border-b border-slate-100 bg-slate-50/50">

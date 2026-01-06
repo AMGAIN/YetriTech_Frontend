@@ -10,14 +10,12 @@ function App() {
     <>
       <div className="p-2 no-scrollbar bg-gray-300 min-h-screen">
         <Navbar />
-        <div className='flex'>
+        <div className='flex flex-col lg:flex-row '>
           <AlertContainer />
           <MainContainer />
           <DetailAlert/>
         </div>
-
       </div>
-
     </>
   )
 }

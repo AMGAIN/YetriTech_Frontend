@@ -6,11 +6,11 @@ const Map = () => {
   const layers = ['Heatmap', 'Cameras', 'Units'];
 
   const deviceData ={
-    latitude: 27.717,
-    longitude: 25.3240
+    latitude: 27.684,
+    longitude: 85.305
   }
   return (
-    <div className="relative h-125 w-full max-w-4xl overflow-hidden rounded-2xl border border-slate-200 shadow-xl bg-white">
+    <div className="relative h-125  w-full overflow-hidden rounded-2xl border border-slate-200 shadow-xl bg-white">
 
       {/* Map Container */}
       <div className="relative w-full h-[500px] overflow-hidden">
