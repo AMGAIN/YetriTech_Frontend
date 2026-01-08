@@ -9,14 +9,12 @@ function Dashboard() {
     <div className="p-2 no-scrollbar bg-gray-300 min-h-screen">
       <Navbar />
       <div className="flex flex-col lg:flex-row">
-        <AlertContainer />
         
         {/* Only the middle part changes when you navigate */}
         <div className="flex-1">
           <Outlet />
         </div>
         
-        <DetailAlert />
       </div>
     </div>
   );
