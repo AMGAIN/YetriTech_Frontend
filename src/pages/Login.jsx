@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -14,7 +14,7 @@ const Login = () => {
 
     try {
       // Send login request to backend
-      const res = await axios.post("http://localhost:3000/auth/login", {
+      const res = await axios.post("http://localhost:3000/api/auth/login", {
         email,
         password,
       });
@@ -28,7 +28,7 @@ const Login = () => {
 
       // Redirect based on role
       if (res.data.user.role === "admin") {
-        navigate("/admin");
+        navigate("/");
       } else {
         navigate("/profile");
       }
@@ -62,9 +62,8 @@ const Login = () => {
             {/* Show message */}
             {message && (
               <p
-                className={`text-center font-bold text-xs ${
-                  message.includes("successful") ? "text-green-600" : "text-red-600"
-                }`}
+                className={`text-center font-bold text-xs ${message.includes("successful") ? "text-green-600" : "text-red-600"
+                  }`}
               >
                 {message}
               </p>
@@ -116,6 +115,15 @@ const Login = () => {
               Login Securely
             </button>
           </form>
+          <p className="text-center text-sm text-gray-500 mt-6">
+            Don’t have an account?{" "}
+            <Link
+              to="/signin"
+              className="text-blue-600 font-semibold hover:underline"
+            >
+              Register
+            </Link>
+          </p>
         </div>
       </div>
     </div>

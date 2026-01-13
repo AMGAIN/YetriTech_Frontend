@@ -6,6 +6,8 @@ import DetailAlert from "./components/DetailAlert";
 import Profile from "./pages/Profile";
 import AdminPage from "./pages/Admin";
 import ProtectedRoute from "./components/ProtectedRoute";
+import KYCForm from "./pages/Kyc";
+import Signin from "./pages/Signin";
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +35,22 @@ export const router = createBrowserRouter([
           </ProtectedRoute>
         )
       },
+      {
+        path: "kyc",
+        element: (
+          <ProtectedRoute>
+            <KYCForm />
+          </ProtectedRoute>
+        )
+      },
+      {
+        path: "signin",
+        element: (
+          <ProtectedRoute>
+            <Signin />
+          </ProtectedRoute>
+        )
+      }
     ],
   },
 ]);
