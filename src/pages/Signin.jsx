@@ -30,88 +30,124 @@ const SignIn = () => {
         formData
       );
 
-      // Save token
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", JSON.stringify(res.data.user));
 
-      setMessage("✅ Account created successfully");
+      setMessage("Account created successfully!");
 
-      // Redirect (optional)
       setTimeout(() => {
-        navigate("/login"); // change route as needed
+        navigate("/login");
       }, 1000);
-
     } catch (error) {
-      setMessage(
-        error.response?.data?.message || "❌ Signup failed"
-      );
+      setMessage(error.response?.data?.message || "Signup failed");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-blue-50 px-4">
-      <div className="bg-white w-full max-w-md rounded-2xl shadow-xl p-8">
-        <h1 className="text-2xl font-bold text-center text-blue-700 mb-2">
-          Create Account
-        </h1>
-        <p className="text-center text-gray-500 mb-6">
-          Sign up to continue
-        </p>
+    <div className="min-h-screen bg-slate-50 flex items-center justify-center p-6 font-sans">
+      <div className="w-full max-w-md bg-white rounded-3xl shadow-2xl shadow-blue-300">
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <input
-            type="text"
-            name="fullname"
-            placeholder="Full Name"
-            className="input"
-            onChange={handleChange}
-            required
-          />
+        {/* Branding Header */}
+        <div className="pt-12 pb-8 px-8 text-center bg-gradient-to-b from-blue-50/50 to-transparent">
+          <div className="inline-block p-3 bg-white rounded-2xl shadow-sm border border-slate-100 mb-4">
+            <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center">
+              <span className="text-white font-black text-xl">T</span>
+            </div>
+          </div>
 
-          <input
-            type="email"
-            name="email"
-            placeholder="Email Address"
-            className="input"
-            onChange={handleChange}
-            required
-          />
+          <h1 className="text-slate-900 font-black text-2xl tracking-tighter leading-tight">
+            <span className="text-blue-800">Yetri</span>
+            <span className="text-blue-500">Connect</span>
+          </h1>
 
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            className="input"
-            onChange={handleChange}
-            required
-          />
+          <p className="text-[10px] text-slate-400 font-bold tracking-[0.3em] uppercase mt-2">
+            Create New Account
+          </p>
+        </div>
 
-          {message && (
-            <p className="text-center text-sm font-medium text-blue-600">
-              {message}
-            </p>
-          )}
+        {/* Form Section */}
+        <div className="p-8 pt-0">
+          <form className="space-y-5" onSubmit={handleSubmit}>
 
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition disabled:opacity-50"
-          >
-            {loading ? "Creating..." : "Sign Up"}
-          </button>
-        </form>
+            {message && (
+              <p
+                className={`text-center font-bold text-xs ${
+                  message.includes("successfully")
+                    ? "text-green-600"
+                    : "text-red-600"
+                }`}
+              >
+                {message}
+              </p>
+            )}
 
-        <p className="text-center text-sm text-gray-500 mt-6">
-          Already have an account?{" "}
-          <Link
-            to="/login"
-            className="text-blue-600 font-semibold hover:underline"
-          >
-            Login
-          </Link>
-        </p>
+            {/* Full Name */}
+            <div>
+              <label className="block text-[11px] font-black text-slate-500 uppercase tracking-widest mb-2 ml-1">
+                Full Name
+              </label>
+              <input
+                type="text"
+                name="fullname"
+                className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all text-slate-900 placeholder:text-slate-400"
+                placeholder="John Doe"
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            {/* Email */}
+            <div>
+              <label className="block text-[11px] font-black text-slate-500 uppercase tracking-widest mb-2 ml-1">
+                Email Address
+              </label>
+              <input
+                type="email"
+                name="email"
+                className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all text-slate-900 placeholder:text-slate-400"
+                placeholder="name@precinct.gov"
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            {/* Password */}
+            <div>
+              <label className="block text-[11px] font-black text-slate-500 uppercase tracking-widest mb-2 ml-1">
+                Password
+              </label>
+              <input
+                type="password"
+                name="password"
+                className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all text-slate-900 placeholder:text-slate-400"
+                placeholder="••••••••"
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            {/* Submit */}
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-black text-xs uppercase tracking-[0.2em] rounded-xl shadow-lg shadow-blue-200 transition-all active:scale-[0.98] disabled:opacity-50"
+            >
+              {loading ? "Creating Account..." : "Register Securely"}
+            </button>
+          </form>
+
+          <p className="text-center text-sm text-gray-500 mt-6">
+            Already have an account?{" "}
+            <Link
+              to="/login"
+              className="text-blue-600 font-semibold hover:underline"
+            >
+              Login
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
   );
