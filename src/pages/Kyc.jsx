@@ -36,13 +36,9 @@ const KYCForm = () => {
         data.append(key, formData[key]);
       });
 
-      const res = await axios.post(
-        "http://localhost:3000/api/kyc/create",
-        data
-      );
+      await axios.post("http://localhost:3000/api/kyc/create", data);
 
-      setMessage("✅ KYC submitted successfully");
-      console.log(res.data);
+      setMessage("KYC submitted successfully!");
 
       setFormData({
         vehicleType: "",
@@ -56,30 +52,50 @@ const KYCForm = () => {
         photo: null,
       });
     } catch (error) {
-      setMessage(
-        error.response?.data?.message || "❌ Failed to submit KYC"
-      );
+      setMessage(error.response?.data?.message || "Failed to submit KYC");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-blue-50 flex items-center justify-center p-6">
-      <form
-        onSubmit={handleSubmit}
-        className="bg-white w-full max-w-5xl rounded-2xl shadow-xl p-8"
-      >
-        <h1 className="text-2xl font-bold text-blue-700 mb-6 text-center">
-          KYC Verification
-        </h1>
+    <div className="min-h-screen bg-slate-50 flex items-center justify-center p-6 font-sans">
+      <div className="w-full max-w-5xl bg-white rounded-3xl shadow-2xl shadow-blue-300">
 
-        <div>
-          <h2 className="text-lg font-semibold text-blue-600 mb-4">
-            Vehicle Details
-          </h2>
+        {/* Header */}
+        <div className="pt-12 pb-8 px-8 text-center bg-gradient-to-b from-blue-50/50 to-transparent">
+          <div className="inline-block p-3 bg-white rounded-2xl shadow-sm border border-slate-100 mb-4">
+            <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center">
+              <span className="text-white font-black text-xl">T</span>
+            </div>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <h1 className="text-slate-900 font-black text-2xl tracking-tighter">
+            <span className="text-blue-800">Yetri</span>
+            <span className="text-blue-500">Connect</span>
+          </h1>
+
+          <p className="text-[10px] text-slate-400 font-bold tracking-[0.3em] uppercase mt-2">
+            KYC Verification
+          </p>
+        </div>
+
+        {/* Form */}
+        <form onSubmit={handleSubmit} className="p-8 pt-0 space-y-6">
+
+          {message && (
+            <p
+              className={`text-center font-bold text-xs ${
+                message.includes("successfully")
+                  ? "text-green-600"
+                  : "text-red-600"
+              }`}
+            >
+              {message}
+            </p>
+          )}
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {[
               ["vehicleType", "Vehicle Type"],
               ["manufactureYear", "Manufacture Year"],
@@ -88,57 +104,67 @@ const KYCForm = () => {
               ["color", "Color"],
               ["owner", "Owner Name"],
               ["deviceId", "Device ID"],
-            ].map(([name, placeholder]) => (
-              <input
-                key={name}
-                type="text"
-                name={name}
-                placeholder={placeholder}
-                className="input"
-                value={formData[name]}
-                onChange={handleChange}
-                required
-              />
+            ].map(([name, label]) => (
+              <div key={name}>
+                <label className="block text-[11px] font-black text-slate-500 uppercase tracking-widest mb-2 ml-1">
+                  {label}
+                </label>
+                <input
+                  type="text"
+                  name={name}
+                  value={formData[name]}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                />
+              </div>
             ))}
 
-            <select
-              name="fuelType"
-              className="input"
-              value={formData.fuelType}
-              onChange={handleChange}
-              required
-            >
-              <option value="">Fuel Type</option>
-              <option value="Petrol">Petrol</option>
-              <option value="Diesel">Diesel</option>
-              <option value="Electric">Electric</option>
-              <option value="Hybrid">Hybrid</option>
-            </select>
+            {/* Fuel Type */}
+            <div>
+              <label className="block text-[11px] font-black text-slate-500 uppercase tracking-widest mb-2 ml-1">
+                Fuel Type
+              </label>
+              <select
+                name="fuelType"
+                value={formData.fuelType}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+              >
+                <option value="">Select fuel</option>
+                <option value="Petrol">Petrol</option>
+                <option value="Diesel">Diesel</option>
+                <option value="Electric">Electric</option>
+                <option value="Hybrid">Hybrid</option>
+              </select>
+            </div>
 
-            <input
-              type="file"
-              name="photo"
-              className="input file:bg-blue-600 file:text-white"
-              onChange={handleChange}
-              required
-            />
+            {/* Photo Upload */}
+            <div>
+              <label className="block text-[11px] font-black text-slate-500 uppercase tracking-widest mb-2 ml-1">
+                Vehicle Photo
+              </label>
+              <input
+                type="file"
+                name="photo"
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl file:bg-blue-600 file:text-white file:border-0 file:px-4 file:py-2 file:rounded-lg"
+              />
+            </div>
           </div>
-        </div>
 
-        {message && (
-          <p className="mt-4 text-center font-medium text-blue-600">
-            {message}
-          </p>
-        )}
-
-        <button
-          type="submit"
-          disabled={loading}
-          className="mt-6 w-full bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition disabled:opacity-50"
-        >
-          {loading ? "Submitting..." : "Submit KYC"}
-        </button>
-      </form>
+          {/* Submit */}
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-black text-xs uppercase tracking-[0.2em] rounded-xl shadow-lg shadow-blue-200 transition-all active:scale-[0.98] disabled:opacity-50"
+          >
+            {loading ? "Submitting..." : "Submit KYC Securely"}
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
