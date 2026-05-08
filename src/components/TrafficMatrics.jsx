@@ -55,7 +55,6 @@ const TrafficMetrics = ({
                     <h3 className="text-lg font-bold tracking-tight text-slate-800">
                         {title}
                     </h3>
-
                     <p className="mt-1 text-[11px] uppercase tracking-[0.2em] text-slate-400 font-semibold">
                         {timeframe}
                     </p>

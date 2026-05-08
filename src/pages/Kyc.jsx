@@ -59,7 +59,7 @@ const KYCForm = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 flex items-center justify-center p-6 font-sans">
+    <div className="border-white w-full min-h-screen bg-slate-50 flex items-center justify-center p-6 font-sans">
       <div className="w-full max-w-5xl bg-white rounded-3xl shadow-2xl shadow-blue-300">
 
         {/* Header */}
@@ -82,7 +82,6 @@ const KYCForm = () => {
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="p-8 pt-0 space-y-6">
-
           {message && (
             <p
               className={`text-center font-bold text-xs ${
@@ -96,8 +95,27 @@ const KYCForm = () => {
           )}
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            
+            {/* Vehicle Type */}
+            <div>
+              <label className="block text-[11px] font-black text-slate-500 uppercase tracking-widest mb-2 ml-1">
+                Vehicle Type
+              </label>
+              <select
+                name="fuelType"
+                value={formData.fuelType}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+              >
+                <option value="">Select Vehicle</option>
+                <option value="Petrol">Bike</option>
+                <option value="Diesel">Scooter</option>
+                <option value="Electric">Car</option>
+                <option value="Hybrid">Truck</option>
+              </select>
+            </div>
             {[
-              ["vehicleType", "Vehicle Type"],
               ["manufactureYear", "Manufacture Year"],
               ["model", "Model"],
               ["licensePlate", "License Plate"],
@@ -119,6 +137,7 @@ const KYCForm = () => {
                 />
               </div>
             ))}
+
 
             {/* Fuel Type */}
             <div>

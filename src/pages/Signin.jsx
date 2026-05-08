@@ -46,7 +46,7 @@ const SignIn = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 flex items-center justify-center p-6 font-sans">
+    <div className="w-full border border-zinc-100 min-h-screen bg-slate-50 flex items-center justify-center p-6 font-sans">
       <div className="w-full max-w-md bg-white rounded-3xl shadow-2xl shadow-blue-300">
 
         {/* Branding Header */}

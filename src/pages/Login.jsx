@@ -39,7 +39,7 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 flex items-center justify-center p-6 font-sans">
+    <div className="border border-zinc-100 w-full min-h-screen bg-slate-50 flex items-center justify-center p-6 font-sans">
       <div className="w-full max-w-md bg-white rounded-3xl shadow-2xl shadow-blue-300">
         {/* Branding Header */}
         <div className="pt-12 pb-8 px-8 text-center bg-gradient-to-b from-blue-50/50 to-transparent">
