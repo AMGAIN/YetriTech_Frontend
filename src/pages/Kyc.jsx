@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 import axios from "axios";
 
 const KYCForm = () => {
@@ -13,7 +16,7 @@ const KYCForm = () => {
     deviceId: "",
     photo: null,
   });
-
+  const [dob, setDob] = useState(null);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
@@ -84,18 +87,17 @@ const KYCForm = () => {
         <form onSubmit={handleSubmit} className="p-8 pt-0 space-y-6">
           {message && (
             <p
-              className={`text-center font-bold text-xs ${
-                message.includes("successfully")
+              className={`text-center font-bold text-xs ${message.includes("successfully")
                   ? "text-green-600"
                   : "text-red-600"
-              }`}
+                }`}
             >
               {message}
             </p>
           )}
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            
+
             {/* Vehicle Type */}
             <div>
               <label className="block text-[11px] font-black text-slate-500 uppercase tracking-widest mb-2 ml-1">
@@ -114,6 +116,24 @@ const KYCForm = () => {
                 <option value="Electric">Car</option>
                 <option value="Hybrid">Truck</option>
               </select>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <label className="block text-[11px] font-black text-slate-500 uppercase tracking-widest mb-2 ml-1">
+                Date of Birth
+              </label>
+
+              <DatePicker
+                selected={dob}
+                onChange={(date) => setDob(date)}
+                dateFormat="dd/MM/yyyy"
+                placeholderText="Select your date of birth"
+                showYearDropdown
+                scrollableYearDropdown
+                yearDropdownItemNumber={100}
+                maxDate={new Date()}
+                className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+              />
             </div>
             {[
               ["manufactureYear", "Manufacture Year"],
@@ -137,7 +157,6 @@ const KYCForm = () => {
                 />
               </div>
             ))}
-
 
             {/* Fuel Type */}
             <div>
