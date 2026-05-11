@@ -88,8 +88,8 @@ const KYCForm = () => {
           {message && (
             <p
               className={`text-center font-bold text-xs ${message.includes("successfully")
-                  ? "text-green-600"
-                  : "text-red-600"
+                ? "text-green-600"
+                : "text-red-600"
                 }`}
             >
               {message}

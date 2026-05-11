@@ -49,8 +49,8 @@ const Login = () => {
             </div>
           </div>
           <h1 className="text-slate-900 font-black text-2xl tracking-tighter leading-tight">
-            <span className="text-blue-800">Yetri</span>
-            <span className="text-blue-500">Connect</span>
+            <span className="text-blue-800">Traffic </span>
+            <span className="text-blue-500">Check</span>
           </h1>
           <p className="text-[10px] text-slate-400 font-bold tracking-[0.3em] uppercase mt-2">
             Authorized Personnel Only
@@ -110,7 +110,7 @@ const Login = () => {
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-black text-xs uppercase tracking-[0.2em] rounded-xl shadow-lg shadow-blue-200 transition-all active:scale-[0.98]"
+              className="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-black text-xs uppercase tracking-[0.2em] rounded-xl shadow-lg shadow-blue-200 transition-all active:scale-[0.98] cursor-pointer"
             >
               Login Securely
             </button>

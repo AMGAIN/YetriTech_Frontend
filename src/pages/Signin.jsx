@@ -58,8 +58,8 @@ const SignIn = () => {
           </div>
 
           <h1 className="text-slate-900 font-black text-2xl tracking-tighter leading-tight">
-            <span className="text-blue-800">Yetri</span>
-            <span className="text-blue-500">Connect</span>
+            <span className="text-blue-800">Traffic </span>
+            <span className="text-blue-500">Check</span>
           </h1>
 
           <p className="text-[10px] text-slate-400 font-bold tracking-[0.3em] uppercase mt-2">
@@ -92,7 +92,7 @@ const SignIn = () => {
                 type="text"
                 name="fullname"
                 className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all text-slate-900 placeholder:text-slate-400"
-                placeholder="John Doe"
+                placeholder="Suraj Amgain"
                 onChange={handleChange}
                 required
               />
@@ -107,7 +107,7 @@ const SignIn = () => {
                 type="email"
                 name="email"
                 className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all text-slate-900 placeholder:text-slate-400"
-                placeholder="name@precinct.gov"
+                placeholder="name@gmail.com"
                 onChange={handleChange}
                 required
               />
@@ -132,7 +132,7 @@ const SignIn = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-black text-xs uppercase tracking-[0.2em] rounded-xl shadow-lg shadow-blue-200 transition-all active:scale-[0.98] disabled:opacity-50"
+              className="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-black text-xs uppercase tracking-[0.2em] rounded-xl shadow-lg shadow-blue-200 transition-all active:scale-[0.98] disabled:opacity-50 cursor-pointer"
             >
               {loading ? "Creating Account..." : "Register Securely"}
             </button>
